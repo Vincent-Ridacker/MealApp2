@@ -31,13 +31,14 @@
             android:id="@+id/youtubeLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/imageMeal"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/titleIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageMeal"
+            android:layout_below="@id/youtubeLink"
             android:text="Ingredients : " />
 
         <ListView

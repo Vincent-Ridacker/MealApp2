@@ -1,8 +1,13 @@
 package com.example.mealapp
 
+import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
@@ -36,19 +41,37 @@ class RecipeActivity : AppCompatActivity() {
         var recipeTextView : TextView = findViewById(R.id.recipeText)
         var mealImageView : ImageView = findViewById(R.id.imageMeal)
         var youtubeLinkTextView : TextView = findViewById(R.id.youtubeLink)
-        val spannableString : SpannableString = SpannableString("Youtube video of the recipe")
-        val clickSpan : ClickableSpan = object : ClickableSpan() {
-            override fun onClick(TextView: View) {
 
-            }
-
-        }
 
         val recipeRunnable = java.lang.Runnable {
             titleTextView.text = details.strMeal
 
             Picasso.get().load(Uri.parse(details.strMealThumb)).into(mealImageView)
-            //ajout Ingrédients
+
+            //youtube Link
+            if(details.strYoutube != null && details.strYoutube != "") {
+                val spannableString: SpannableString =
+                    SpannableString("Video : " + details.strYoutube)
+                val clickSpan: ClickableSpan = object : ClickableSpan() {
+                    override fun onClick(TextView: View) {
+                        var intent: Intent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(details.strYoutube))
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                    }
+
+                    override fun updateDrawState(ds: TextPaint) {
+                        ds.setColor(Color.BLUE)
+                        ds.isUnderlineText = true
+                    }
+
+                }
+                spannableString.setSpan(clickSpan, 8, spannableString.length , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                youtubeLinkTextView.text = spannableString
+                youtubeLinkTextView.movementMethod = LinkMovementMethod.getInstance()
+            }
+
+            //adding Ingrédients
             val listItems : Array<String> = getIngredients(details)
             val adapter =ArrayAdapter<String>(this, R.layout.ingredient_item, listItems)
             ingredientsListView.adapter = adapter
