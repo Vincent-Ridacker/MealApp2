@@ -42,6 +42,9 @@
             android:text="TextView"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="10dp"
             app:layout_constraintStart_toEndOf="@id/youtube_icon"
             app:layout_constraintTop_toBottomOf="@id/imageMeal" />
 
@@ -55,13 +58,19 @@
             android:textStyle="bold"
             android:text="Ingredients : "
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/youtubeLink" />
+            app:layout_constraintTop_toBottomOf="@id/youtubeLink"
+            android:paddingTop="10dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="10dp"/>
 
         <ListView
             android:id="@+id/ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleIngredients" />
+            android:layout_below="@id/titleIngredients"
+            android:paddingTop="10dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="10dp"/>
 
         <TextView
             android:id="@+id/instruction"
@@ -80,7 +89,10 @@
             android:layout_below="@id/instruction"
             android:text="TextView"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="10dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="10dp"/>
 
 
 
