@@ -34,8 +34,7 @@ class CategoryActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_view)
         title= findViewById(R.id.title)
         title.text = "Meal App"
-
-        //circularProgressIndicator = findViewById(R.id.circular_progress_indicator)
+        
 
         val url = URL("https://www.themealdb.com/api/json/v1/1/categories.php")
 
@@ -45,14 +44,11 @@ class CategoryActivity : AppCompatActivity() {
 
         val client = OkHttpClient()
 
-        //circularProgressIndicator.visibility = View.VISIBLE
-
         client.newCall(request).enqueue(object : Callback {
 
 
             override fun onFailure(call: Call, e: IOException) {
                 Log.e("OKHTTP", e.localizedMessage)
-                //circularProgressIndicator.visibility = View.GONE
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -61,7 +57,6 @@ class CategoryActivity : AppCompatActivity() {
                     val categoriesResponse = gson.fromJson(it, CategoryRepo::class.java)
                     categoriesResponse.categories?.let { it1 ->
                         runOnUiThread {
-                            //circularProgressIndicator.visibility = View.GONE
                             categoriesAdapter = CategoryAdaptater(it1)
                             recyclerView.adapter = categoriesAdapter
                             recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
