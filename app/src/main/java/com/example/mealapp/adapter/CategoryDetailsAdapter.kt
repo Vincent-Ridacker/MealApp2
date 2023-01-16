@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mealapp.activties.RecipeActivity
 import com.squareup.picasso.Picasso
 
 class CategoryDetailsViewHolder(itemView: View, var categoryDetails: CategoryDetails?=null) : RecyclerView.ViewHolder(itemView) {
@@ -15,7 +16,7 @@ class CategoryDetailsViewHolder(itemView: View, var categoryDetails: CategoryDet
     var imageView : ImageView = itemView.findViewById(R.id.categoryDetailsImage)
     init{
         itemView.setOnClickListener{
-            val intent = Intent(itemView.context,RecipeActivity::class.java)
+            val intent = Intent(itemView.context, RecipeActivity::class.java)
             val idMeal : Int? = categoryDetails?.idMeal?.toInt()
             intent.putExtra("mealId",  idMeal)
             itemView.context.startActivity(intent)

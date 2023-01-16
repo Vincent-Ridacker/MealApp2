@@ -1,4 +1,4 @@
-package com.example.mealapp
+package com.example.mealapp.activties
 
 import android.content.Intent
 import android.graphics.Color
@@ -18,6 +18,9 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mealapp.DetailsRecipe
+import com.example.mealapp.Meals
+import com.example.mealapp.R
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import okhttp3.*
