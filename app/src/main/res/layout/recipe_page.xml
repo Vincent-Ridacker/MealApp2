@@ -10,19 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".RecipeActivity">
-
-        <TextView
-            android:id="@+id/titleRecipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        <include
+            android:id="@+id/toolbar_menu"
+            layout="@layout/toolbar_menu" />
 
         <ImageView
             android:id="@+id/imageMeal"
             android:layout_width="match_parent"
             android:layout_height="280dp"
-            android:layout_below="@id/titleRecipe"
+            android:layout_below="@id/toolbar_menu"
             android:contentDescription="@null"
             tools:src="@tools:sample/backgrounds/scenic" />
 

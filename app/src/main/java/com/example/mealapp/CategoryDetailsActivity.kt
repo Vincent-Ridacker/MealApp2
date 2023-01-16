@@ -22,8 +22,6 @@ class CategoryDetailsActivity  : AppCompatActivity() {
 
    private lateinit var categoriesDetailsAdapter: CategoryDetailAdapter
 
-   private lateinit var circularProgressIndicator: CircularProgressIndicator
-
    private lateinit var title: TextView
 
    private lateinit var backButton: ImageButton
@@ -35,7 +33,6 @@ class CategoryDetailsActivity  : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.activity_category_details)
-      window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
       supportActionBar?.hide()
       category.strCategory= intent.getStringExtra("strCategory")
       recyclerView = findViewById(R.id.recycler_view_details)
@@ -45,7 +42,7 @@ class CategoryDetailsActivity  : AppCompatActivity() {
       backButton.setOnClickListener {
          finish()
       }
-      //circularProgressIndicator = findViewById(R.id.circular_progress_indicator)
+
 
       val url = URL("https://www.themealdb.com/api/json/v1/1/filter.php?c="+category.strCategory)
 
@@ -55,14 +52,11 @@ class CategoryDetailsActivity  : AppCompatActivity() {
 
       val client = OkHttpClient()
 
-      //circularProgressIndicator.visibility = View.VISIBLE
-
       client.newCall(request).enqueue(object : Callback {
 
 
          override fun onFailure(call: Call, e: IOException) {
             Log.e("OKHTTP", e.localizedMessage)
-            //circularProgressIndicator.visibility = View.GONE
          }
 
          override fun onResponse(call: Call, response: Response) {
@@ -71,13 +65,10 @@ class CategoryDetailsActivity  : AppCompatActivity() {
                val categoryDetailsResponse = gson.fromJson(it, CategoryDetailsRepo::class.java)
                categoryDetailsResponse.meals?.let { it1 ->
                   runOnUiThread {
-                     //circularProgressIndicator.visibility = View.GONE
                      categoriesDetailsAdapter = CategoryDetailAdapter(it1)
                      recyclerView.adapter = categoriesDetailsAdapter
                      recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
                      recyclerView.itemAnimator = DefaultItemAnimator()
-                     //circularProgressIndicator.visibility = View.GONE
-
 
                   }
 
