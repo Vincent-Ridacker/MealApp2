@@ -9,7 +9,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".RecipeActivity">
+        tools:context=".activties.RecipeActivity">
         <include
             android:id="@+id/toolbar_menu"
             layout="@layout/toolbar_menu" />
@@ -20,22 +20,42 @@
             android:layout_height="280dp"
             android:layout_below="@id/toolbar_menu"
             android:contentDescription="@null"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_menu"
+            tools:src="@tools:sample/backgrounds/scenic"
+            android:scaleType="fitXY"/>
 
+        <ImageView
+            android:id="@+id/youtube_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/youtubeLink"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/youtubeLink" />
 
         <TextView
             android:id="@+id/youtubeLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageMeal"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/youtube_icon"
+            app:layout_constraintTop_toBottomOf="@id/imageMeal" />
 
         <TextView
             android:id="@+id/titleIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/youtubeLink"
-            android:text="Ingredients : " />
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Ingredients : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youtubeLink" />
 
         <ListView
             android:id="@+id/ingredients"
@@ -44,11 +64,23 @@
             android:layout_below="@id/titleIngredients" />
 
         <TextView
+            android:id="@+id/instruction"
+            android:text="Insctructions : "
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredients"/>
+
+        <TextView
             android:id="@+id/recipeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ingredients"
-            android:text="TextView" />
+            android:layout_below="@id/instruction"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
 
 
 

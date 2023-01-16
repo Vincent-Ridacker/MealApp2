@@ -1,17 +1,15 @@
-package com.example.mealapp
+package com.example.mealapp.activties
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mealapp.CategoryAdaptater
+import com.example.mealapp.CategoryRepo
+import com.example.mealapp.R
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.gson.Gson
 import okhttp3.*
@@ -35,7 +33,7 @@ class CategoryActivity : AppCompatActivity() {
         supportActionBar?.hide()
         recyclerView = findViewById(R.id.recycler_view)
         title= findViewById(R.id.title)
-        title.text = "My Food"
+        title.text = "Meal App"
 
         //circularProgressIndicator = findViewById(R.id.circular_progress_indicator)
 

@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mealapp.activties.CategoryDetailsActivity
 import com.squareup.picasso.Picasso
 
 class CategoryViewHolder(itemView: View,var category: Category?=null) : RecyclerView.ViewHolder(itemView) {
@@ -15,7 +16,7 @@ class CategoryViewHolder(itemView: View,var category: Category?=null) : Recycler
     var imageView : ImageView = itemView.findViewById<ImageView>(R.id.categoryImage)
     init{
         itemView.setOnClickListener{
-            val intent = Intent(itemView.context,CategoryDetailsActivity::class.java)
+            val intent = Intent(itemView.context, CategoryDetailsActivity::class.java)
             intent.putExtra("strCategory", category?.strCategory)
             itemView.context.startActivity(intent)
         }

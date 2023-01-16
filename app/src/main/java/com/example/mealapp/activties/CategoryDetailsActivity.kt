@@ -1,17 +1,17 @@
-package com.example.mealapp
+package com.example.mealapp.activties
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.example.mealapp.Category
+import com.example.mealapp.CategoryDetailAdapter
+import com.example.mealapp.CategoryDetailsRepo
+import com.example.mealapp.R
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
