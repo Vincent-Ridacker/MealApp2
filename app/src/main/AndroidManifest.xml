@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         
-                <activity
+        <activity
             android:name=".RecipeActivity"
             android:exported="true">
 
@@ -49,6 +49,5 @@
 
     </application>
 
-    </application>
 
 </manifest>

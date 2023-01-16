@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
@@ -26,17 +27,25 @@ import java.net.URL
 
 class RecipeActivity : AppCompatActivity() {
     private lateinit var details: DetailsRecipe
+    private lateinit var title: TextView
+    private lateinit var backButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recipe_page)
 
-        val url = URL("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772")
+        supportActionBar?.hide()
+        backButton =  findViewById(R.id.ib_back)
+        backButton.setOnClickListener {
+            finish()
+        }
+
+        val mealId : Int= intent.getIntExtra("mealId", 0)
+        val url = URL("https://www.themealdb.com/api/json/v1/1/lookup.php?i=$mealId")
 
         val request = Request.Builder()
             .url(url)
             .build()
 
-        var titleTextView : TextView = findViewById(R.id.titleRecipe)
         var ingredientsListView : ListView = findViewById(R.id.ingredients)
         var recipeTextView : TextView = findViewById(R.id.recipeText)
         var mealImageView : ImageView = findViewById(R.id.imageMeal)
@@ -44,10 +53,9 @@ class RecipeActivity : AppCompatActivity() {
 
 
         val recipeRunnable = java.lang.Runnable {
-            titleTextView.text = details.strMeal
-
             Picasso.get().load(Uri.parse(details.strMealThumb)).into(mealImageView)
-
+            title = findViewById(R.id.title)
+            title.text = details.strMeal
             //youtube Link
             if(details.strYoutube != null && details.strYoutube != "") {
                 val spannableString: SpannableString =
